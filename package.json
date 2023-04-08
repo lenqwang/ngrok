@@ -1,5 +1,5 @@
 {
-  "name": "ngrok",
+  "name": "@lenqwang/ngrok",
   "version": "4.3.3",
   "description": "node wrapper for ngrok",
   "main": "index.js",
@@ -26,7 +26,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/bubenshchykov/ngrok.git"
+    "url": "git://github.com/lenqwang/ngrok.git"
   },
   "keywords": [
     "ngrok",
@@ -35,10 +35,10 @@
     "localtunnel",
     "webhook"
   ],
-  "author": "bubenshchykov",
+  "author": "lenqwang",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/bubenshchykov/ngrok/issues"
+    "url": "https://github.com/lenqwang/ngrok/issues"
   },
   "devDependencies": {
     "chai": "^4.3.4",
