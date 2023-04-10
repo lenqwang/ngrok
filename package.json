@@ -1,6 +1,6 @@
 {
   "name": "@lenqwang/ngrok",
-  "version": "4.3.4",
+  "version": "4.3.5",
   "description": "node wrapper for ngrok",
   "main": "index.js",
   "exports": {
@@ -20,9 +20,7 @@
     "index.js",
     "index.d.ts",
     "postinstall.js",
-    "src/client.js",
-    "src/process.js",
-    "src/utils.js"
+    "src"
   ],
   "repository": {
     "type": "git",
