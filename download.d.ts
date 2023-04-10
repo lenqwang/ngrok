@@ -1,4 +1,4 @@
-declare module "ngrok/download" {
+declare module "@lenqwang/ngrok/download" {
   export default function downloadNgrok(
     callback: (err?: Error) => void,
     options?: {
