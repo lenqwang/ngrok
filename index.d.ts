@@ -1,6 +1,6 @@
 import { Response } from "got";
 
-declare module "ngrok" {
+declare module "@lenqwang/ngrok" {
   /**
    * Creates a ngrok tunnel.
    * E.g:
