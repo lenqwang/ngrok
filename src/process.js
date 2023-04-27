@@ -2,6 +2,8 @@ const { spawn } = require("child_process");
 const { join } = require("path");
 
 const { defaultDir, bin, ready, inUse } = require("./constants");
+const errorMessageRegEx = /ERROR.*/;
+const errorCodeRegEx = /ERR_NGROK_\d*/;
 
 let processPromise, activeProcess;
 
@@ -75,6 +77,16 @@ async function startProcess(opts) {
 
   ngrok.stderr.on("data", (data) => {
     const msg = data.toString().substring(0, 10000);
+    const lines = msg.split(/\n/);
+    lines.forEach(line => {
+      let errorMessage = line.match(errorMessageRegEx);
+      if (errorMessage) {
+        errors.push(cleanError(errorMessage[0]));
+        if (line.match(errorCodeRegEx)) {
+          reject(new Error(errors.join('\n')));
+        }
+      }
+    })
     reject(new Error(msg));
   });
 
@@ -100,6 +112,11 @@ async function startProcess(opts) {
     }
     ngrok.stderr.removeAllListeners("data");
   }
+}
+
+function cleanError(message) {
+  const newMessage = message.replace(/ERROR:\s+/, '');
+  return newMessage.replace(errorCodeRegEx, `More info: https://ngrok.com/docs/errors/${newMessage.toLowerCase()}`);
 }
 
 function killProcess() {
